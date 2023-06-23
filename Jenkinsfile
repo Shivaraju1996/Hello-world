@@ -25,12 +25,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                // Deploy the application
-                // For example:
-                sh 'mvn deploy'
-            }
-        }
+       
+        
     }
 }
