@@ -1,15 +1,36 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.3.3'
-        }
-    }
+    agent any
+
     stages {
-        stage('log version info') {
+        stage('Checkout') {
             steps {
-            sh 'mvn --version'
-            sh 'mvn clean install'
+                // Checkout the code from Git repository
+                git 'https://github.com/Shivaraju1996/Hello-world.git'
+            }
         }
+
+        stage('Build') {
+            steps {
+                // Perform build steps here
+                // For example:
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests
+                // For example:
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the application
+                // For example:
+                sh 'mvn deploy'
+            }
         }
     }
 }
